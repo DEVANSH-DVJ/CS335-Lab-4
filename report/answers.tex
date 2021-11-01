@@ -12,6 +12,7 @@
 \usepackage{graphicx}
 \usepackage[export]{adjustbox}
 \usepackage{sectsty}
+\usepackage{enumitem}
 \renewcommand{\thesubsubsection}{(\roman{subsubsection})}
 
 \usepackage[dvipsnames]{xcolor}
@@ -50,7 +51,36 @@
 
 \newpage
 \section{Kernel design and Kernelized clustering}
-\subsection{CS 337: Proving kernel validity}
+\subsection{CS 337: Proving Kernel Validity}
+We are going to use the following property of kernels from Lecture slides (Lecture 11):
+\begin{equation*}
+    \begin{aligned}
+        K(x,y) = \sum_{d=1}^r \alpha_d(x^T y)^d \text{ where } \alpha_d \ge 0 \text{ is a kernel } (r \text{ can be } \infty)
+    \end{aligned}
+\end{equation*}
+
+Another property of kernels which we are going to use is:
+\begin{equation*}
+    \begin{aligned}
+         & K(x, y) \text{ is a kernel } \implies K'(x, y) = f(x) f(y) K(x, y) \text{ is also a kernel} \\
+         & \text{Corresponding feature map, } \phi'(x) := f(x) \phi(x)
+    \end{aligned}
+\end{equation*}
+
+
+An important property of exponential function which we are going to exploit is:
+\begin{equation*}
+    \begin{aligned}
+        \exp(x) = \sum_{k=0}^{\infty} \frac{x^k}{k!}
+    \end{aligned}
+\end{equation*}
+
+Using the above properties, we can conclude that $\exp(\alpha x^T y)$ where $\alpha \ge 0$ is a kernel.
+
+Now, if take $\alpha = \dfrac{1}{\sigma^2}$ and $f(x) = \exp\bigg(- \dfrac{x^T x}{2 \sigma^2}\bigg)$, we get: \\
+$K_\alpha (x, y) = \exp\bigg(- \dfrac{||x - y||^2}{2 \sigma^2}\bigg) = \exp\bigg(- \dfrac{x^T x}{2 \sigma^2}\bigg) \exp\bigg(- \dfrac{y^T y}{2 \sigma^2}\bigg) \exp\bigg(\dfrac{x^T y}{\sigma^2}\bigg)$ is a kernel.
+
+Hence, proved. \hfill $\qed$
 
 
 \subsection{CS 337: Simple Kernel Design}
