@@ -99,6 +99,10 @@ This leads to contradiction. \\
 Thus, even after convergence, the vanilla KMeans algorithms won't be able to correctly classify the clusters for any value of $r_1$ and $r_2$.
 
 \subsubsection{}
+We see that the two clusters differ in distance from origin. \\
+We propose $\phi(x) = ||x||_2$. Thus, $K(x, x') = ||x||_2 ||x'||_2$. \\
+$\int_x \int_{x'} K(x, x') g(x) g(x') dx dx' = \bigg( \int_x ||x||_2 g(x) dx \bigg) \bigg( \int_{x'} ||x'||_2 g(x') dx' \bigg) = \bigg( \int_x ||x||_2 g(x) dx \bigg)^2 \ge 0$ \\
+Therefore, chosen kernel function is a valid kernel.
 
 
 
