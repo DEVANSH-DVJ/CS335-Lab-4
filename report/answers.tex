@@ -85,6 +85,18 @@ Hence, proved. \hfill $\qed$
 
 \subsection{CS 337: Simple Kernel Design}
 \subsubsection{}
+We proved in Lecture slides (Lecture 13, Part 2) that the vanilla KMeans algorithm would converge in finite number of iterations (say, $N$). \\
+Without loss of generality, let $r_1 \ge r_2$. \\
+For the sake of contradiction, let's assume that after $N$ iterations we get ${\mu_1, \mu_2}$ which can correctly classify the clusters. Obviously, $\mu_1 \neq \mu_2$. \\
+So, blue points have $Pr_1 = 1$ and $Pr_2 = 0$ while red points have $Pr_1 = 0$ and $Pr_2 = 1$. \\
+As the algorithm has converged, the $Pr$s for all points and $\mu$s won't change any further. \\
+
+The decision boundary would be $f(x) = \bigg(x - \dfrac{\mu_1 + \mu_2}{2}\bigg) \cdot (\mu_2 - \mu_1) = (x \cdot (\mu_2 - \mu_1)) - \dfrac{||\mu_1 - \mu_2||^2}{2}$. \\
+This decision boundary is linear in $x$, therefore, due to radial symmetry some of blue and red points would be on same side. \\
+However, we know that $Pr_1 = 0$ for red points and $Pr_1 = 1$ for blue points. So in $(N+1)^{th}$ iteration, the values of $Pr$s would change for some points. \\
+
+This leads to contradiction. \\
+Thus, even after convergence, the vanilla KMeans algorithms won't be able to correctly classify the clusters for any value of $r_1$ and $r_2$.
 
 \subsubsection{}
 
