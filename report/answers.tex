@@ -135,7 +135,7 @@ For Dataset 2, we get different centroids for different initialization. This can
 
 \subsubsection{}
 We need to initialize the centroids at different locations. \\
-One of the fastest method is to randomly choose\verb!n_clusters! data points. This method is also known as Forgy Initialization. \\
+One of the fastest method is to randomly choose \verb!n_clusters! data points. This method is also known as Forgy Initialization. \\
 I have implemented the algorithm with this initialization. \\
 This initialization method makes sense because the clusters detected through KMeans are more probable to be near the modes present in data. \\
 By randomly choosing points from data, we are making it more probable to get a point that lies close to the modes.
@@ -195,6 +195,66 @@ We see that the two clusters differ in distance from origin. \\
 We propose $\phi(x) = ||x||_2$. Thus, $K(x, x') = ||x||_2 ||x'||_2$. \\
 $\int_x \int_{x'} K(x, x') g(x) g(x') dx dx' = \bigg( \int_x ||x||_2 g(x) dx \bigg) \bigg( \int_{x'} ||x'||_2 g(x') dx' \bigg) = \bigg( \int_x ||x||_2 g(x) dx \bigg)^2 \ge 0$ \\
 Therefore, chosen kernel function is a valid kernel.
+
+\bigskip
+\bigskip
+
+Code for the class \verb!Kmeans_Kernel! updated in notebook. \\
+
+For Dataset 3, we observe that the algorithm works well as the dataset is linearly separable in the above defined $\phi$-space. \\
+For Dataset 3 shifted by $(5, 5)$, we observe that the algorithm works well after zero-centering the data. \\
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/orig.png}
+        \caption[]{True clusters}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/K0.png}
+        \caption[]{Seed = 0}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/K11.png}
+        \caption[]{Seed = 11}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/K123.png}
+        \caption[]{Seed = 123}
+    \end{subfigure}
+    \caption[]{Dataset 3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3_shifted/orig.png}
+        \caption[]{True clusters}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3_shifted/K0.png}
+        \caption[]{Seed = 0}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3_shifted/K11.png}
+        \caption[]{Seed = 11}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3_shifted/K123.png}
+        \caption[]{Seed = 123}
+    \end{subfigure}
+    \caption[]{Dataset 3 shifted by $(5, 5)$}
+\end{figure}
 
 
 
