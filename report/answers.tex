@@ -10,6 +10,7 @@
 \usepackage{enumitem}
 \usepackage{floatrow}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage[export]{adjustbox}
 \usepackage{sectsty}
 \usepackage{enumitem}
@@ -46,7 +47,98 @@
 \newpage
 \section{Clustering}
 \subsection{CS 335 KMeans Implementation}
+\subsubsection{}
+Code for the class \verb!Kmeans! updated in notebook.
 
+\subsubsection{}
+For Dataset 1, we observe that the algorithm works well as the dataset is linearly separable. \\
+For Dataset 2, we get algorithm converges to same centroids (except flipping of color) but these are not able to separate the clusters as the dataset isn't linearly separable. \\
+For Dataset 2, we get different centroids for different initialization. This can be explained by the radial symmetry. \\
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D1/orig.png}
+        \caption[]{True clusters}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D1/0.png}
+        \caption[]{Seed = 0}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D1/11.png}
+        \caption[]{Seed = 11}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D1/123.png}
+        \caption[]{Seed = 123}
+    \end{subfigure}
+    \caption[]{Dataset 1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D2/orig.png}
+        \caption[]{True clusters}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D2/0.png}
+        \caption[]{Seed = 0}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D2/11.png}
+        \caption[]{Seed = 11}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D2/123.png}
+        \caption[]{Seed = 123}
+    \end{subfigure}
+    \caption[]{Dataset 2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/orig.png}
+        \caption[]{True clusters}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/0.png}
+        \caption[]{Seed = 0}
+    \end{subfigure}
+    \vskip\baselineskip
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/11.png}
+        \caption[]{Seed = 11}
+    \end{subfigure}
+    \begin{subfigure}[H]{0.35\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/D3/123.png}
+        \caption[]{Seed = 123}
+    \end{subfigure}
+    \caption[]{Dataset 3}
+\end{figure}
+
+\subsubsection{}
+We need to initialize the centroids at different locations. \\
+One of the fastest method is to randomly choose\verb!n_clusters! data points. This method is also known as Forgy Initialization. \\
+I have implemented the algorithm with this initialization. \\
+This initialization method makes sense because the clusters detected through KMeans are more probable to be near the modes present in data. \\
+By randomly choosing points from data, we are making it more probable to get a point that lies close to the modes.
 
 
 \newpage
